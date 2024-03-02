@@ -21,10 +21,15 @@ The script works fine on my device. Editing and changes to the script may be nec
 ## My hardware configuration
 
 1) Raspberry Pi 4B
+
 https://www.raspberrypi.com/products/raspberry-pi-4-model-b/
+
 2) Kali linux
+
 https://www.kali.org/
+
 3) Alpha Network Wi-Fi card model AWUS036AC
-To buy: https://sapsan-sklep.pl/en/products/alfa-awus036ac-wifi-usb-adapter-z-hub
+
+https://www.alfa.com.tw/products/awus036ac
 
 
