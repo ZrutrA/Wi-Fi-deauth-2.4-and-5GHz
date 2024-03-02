@@ -61,7 +61,7 @@ echo "Za chwile nastapi skanowanie dostepnych sieci Wi-Fi."
 echo "Przerwij skanowanie za pomoca nacisniecia CTRL + C"
 
 # Zapytanie użytkownika o rodzaj sieci do skanowania
-read -p "Jaką sieć chcesz przeskanować? (1 - 2.4 GHz, 2 - 5 GHz): " network_type
+read -p "Jaki typ sieci chcesz przeskanować? (1 - 2.4 GHz, 2 - 5 GHz): " network_type
 
 # Sprawdzenie odpowiedzi użytkownika i uruchomienie odpowiedniego skanowania
 if [[ "$network_type" == "1" ]]; then
