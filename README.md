@@ -12,3 +12,9 @@ a) Wi-Fi 2.4GHz: https://sudorealm.com/blog/deauthentication-attack-using-kali-l
 
 b) Wi-Fi 5Ghz: https://blog.spacehuhn.com/5ghz-deauther 
 
+## Disclaimers
+
+The project is of a testing and educational nature. Only use it legally. I am not responsible for what you do with this program.
+
+The script works fine on my device. Editing and changes to the script may be necessary on your device. You have to face this on your own!
+
