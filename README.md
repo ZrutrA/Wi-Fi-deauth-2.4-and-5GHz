@@ -18,7 +18,7 @@ The project is of a testing and educational nature. Only use it legally. I am no
 
 The script works fine on my device. Editing and changes to the script may be necessary on your device. You have to face this on your own!
 
-## My hardware configuration
+## My hardware and software
 
 1) Raspberry Pi 4B
 
@@ -31,5 +31,20 @@ https://www.kali.org/
 3) Alpha Network Wi-Fi card model AWUS036AC
 
 https://www.alfa.com.tw/products/awus036ac
+
+## Uruchomienie
+
+1) Pobierz plik skryptu deauth5and24ghz-en.sh (język angielski) lub deauth5and24ghz-pl.sh (język polski).
+
+2) Otwórz konsolę i zaloguj sie jako administrator wpisując polecenie
+
+sudo su
+3) uruchom skrypr: 
+
+./deauth5and24ghz-en.sh
+
+lub 
+
+./deauth5and24ghz-pl.sh
 
 
