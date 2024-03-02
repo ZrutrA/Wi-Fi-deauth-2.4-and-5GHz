@@ -21,11 +21,8 @@ The script works fine on my device. Editing and changes to the script may be nec
 ## My hardware configuration
 
 1) Raspberry Pi 4B
-2) 
-3) Kali linux
-4) 
-5) Alpha Network Wi-Fi card model AWUS036AC
-6) 
-To buy:
-https://sapsan-sklep.pl/en/products/alfa-awus036ac-wifi-usb-adapter-z-hub
+2) Kali linux
+3) Alpha Network Wi-Fi card model AWUS036AC
+To buy: https://sapsan-sklep.pl/en/products/alfa-awus036ac-wifi-usb-adapter-z-hub
+
 
