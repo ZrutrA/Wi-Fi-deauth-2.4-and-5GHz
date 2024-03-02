@@ -18,3 +18,14 @@ The project is of a testing and educational nature. Only use it legally. I am no
 
 The script works fine on my device. Editing and changes to the script may be necessary on your device. You have to face this on your own!
 
+## My hardware configuration
+
+1) Raspberry Pi 4B
+2) 
+3) Kali linux
+4) 
+5) Alpha Network Wi-Fi card model AWUS036AC
+6) 
+To buy:
+https://sapsan-sklep.pl/en/products/alfa-awus036ac-wifi-usb-adapter-z-hub
+
