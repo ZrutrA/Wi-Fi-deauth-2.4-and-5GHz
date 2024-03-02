@@ -32,19 +32,50 @@ https://www.kali.org/
 
 https://www.alfa.com.tw/products/awus036ac
 
-## Uruchomienie
+Your WiFi card must have the MONITOR MODE function.
 
-1) Pobierz plik skryptu deauth5and24ghz-en.sh (język angielski) lub deauth5and24ghz-pl.sh (język polski).
+## System requirements
 
-2) Otwórz konsolę i zaloguj sie jako administrator wpisując polecenie
+You must have aircrack-ng installed (in Kali Linux it is already installed by default):
+
+sudo apt-get install aircrack-ng
+
+## Activation
+
+1) Download the script file deauth5and24ghz-en.sh (English) or deauth5and24ghz-pl.sh (Polish).
+
+2) Open the console and log in as administrator by typing the command
 
 sudo su
-3) uruchom skrypr: 
+
+3) run the script:
 
 ./deauth5and24ghz-en.sh
 
-lub 
+or
 
 ./deauth5and24ghz-pl.sh
 
+## Working with the script
 
+1) Displaying available WiFi interfaces
+
+2) Asking the user to select an interface
+
+2) Starting monitor mode for the selected card. Your Wi-Fi connections will stop.
+
+3) Asking the user what type of network to scan. What network do you want to scan? (1 - 2.4 GHz, 2 - 5 GHz)?
+
+4) It will scan and display available Wi-Fi networks. The BSSID and channel will be visible there. Stop scanning by pressing CTRL + C.
+
+5) Query the user for the network's BSSID
+
+6) User query for network channel
+
+7) Listening to the selected network on the selected channel. You will see how many active devices are connected to the AP. Stop listening by pressing CTRL + C.
+
+8) Specify the deauthentication attack execution time (in seconds).
+
+9) A deauthorization attack is in progress for the selected Wi-Fi network. The attack occurs in series of 10. Stop the attack by pressing the 'K' key. If the attack time specified by the user expires, the attack will be automatically interrupted (without having to press the "K" key).
+
+10) After stopping the attack, monitor mode for the selected card will be automatically stopped and normal operation of the WiFi network will be restored.
