@@ -30,7 +30,7 @@ https://www.kali.org/
 
 3) Alpha Network Wi-Fi card model AWUS036AC
 
-https://www.alfa.com.tw/products/awus036ac
+https://www.alfa.com.tw/products/awus036ac_1
 
 Your WiFi card must have the MONITOR MODE function.
 
